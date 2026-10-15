@@ -5,6 +5,75 @@ import streamlit as st
 BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="Retail Banking UI", layout="wide")
+
+st.markdown(
+    """
+    <style>
+    /* dark gray gradient background */
+    .stApp {
+        background: linear-gradient(135deg, #1f2328 0%, #2b2f36 50%, #3a3f47 100%);
+        color: #e6e6e6;
+    }
+    [data-testid="stHeader"] { background: transparent; }
+
+    /* buttons: dark blue with 0.5 opacity (was red) */
+    .stButton > button {
+        background-color: rgba(30, 64, 175, 0.5);
+        color: #ffffff;
+        border: 1px solid rgba(30, 64, 175, 0.8);
+        font-weight: 600;
+    }
+    .stButton > button:hover {
+        background-color: rgba(30, 64, 175, 0.75);
+        border-color: #1e40af;
+        color: #ffffff;
+    }
+    .stButton > button:focus:not(:active) {
+        box-shadow: 0 0 0 0.2rem rgba(30, 64, 175, 0.35);
+        color: #ffffff;
+    }
+
+    /* tabs: no red underline; hover + bolder on active */
+    .stTabs [data-baseweb="tab-list"] {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        gap: 48px;
+    }
+    .stTabs [data-baseweb="tab"] {
+        font-weight: 500;
+        color: #d0d4da;
+        margin-right: 32px;
+        padding: 0 8px;
+        transform-origin: left center;
+        transition: color 0.2s ease, font-weight 0.2s ease, transform 0.2s ease;
+    }
+    .stTabs [data-baseweb="tab"]:hover {
+        color: #ffffff;
+        font-weight: 700;
+        transform: scale(1.1);
+    }
+    .stTabs [aria-selected="true"] {
+        color: #ffffff !important;
+        font-weight: 800 !important;
+    }
+    .stTabs [data-baseweb="tab-highlight"],
+    .stTabs [data-baseweb="tab-border"] {
+        background-color: transparent !important;
+    }
+
+    /* JSON viewer: recolor orange keys to light gray */
+    [data-testid="stJson"],
+    [data-testid="stJson"] * {
+        color: #d1d5db !important;
+    }
+    [data-testid="stJson"] .object-key,
+    [data-testid="stJson"] .object-key span {
+        color: #d1d5db !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.title("Retail Banking")
 st.caption(f"Backend: {BACKEND_URL}")
 
